@@ -16,4 +16,14 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BdCoreTypes\BdCoreTypes.csproj" />
+    <ProjectReference Include="..\BdCore\BdCore.csproj" />
+    <ProjectReference Include="..\ReferenceDrone\ReferenceDrone.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Support\" />
+  </ItemGroup>
+
 </Project>

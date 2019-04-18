@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,6 +7,10 @@
   <ItemGroup>
     <PackageReference Include="Plisky.Diagnostics" Version="2.2.2" />
     <PackageReference Include="Plisky.Plumbing" Version="1.5.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BdCoreTypes\BdCoreTypes.csproj" />
   </ItemGroup>
 
 </Project>
