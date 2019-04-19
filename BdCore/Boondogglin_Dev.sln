@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BdConsoleRunner", "BdConsoleRunner\BdConsoleRunner.csproj", "{3D9FEB7D-3CE2-4419-B55F-C00B6B114994}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BdConsoleRunner", "BdConsoleRunner\BdConsoleRunner.csproj", "{3D9FEB7D-3CE2-4419-B55F-C00B6B114994}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BdCore.Test", "BdCore.Test\BdCore.Test.csproj", "{40B57194-E969-466D-9A60-78CBDB8C4188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BdCore.Test", "BdCore.Test\BdCore.Test.csproj", "{40B57194-E969-466D-9A60-78CBDB8C4188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BdCoreTypes", "BdCoreTypes\BdCoreTypes.csproj", "{94A6EBE6-DF8A-4284-A67D-76B2667C0FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BdCoreTypes", "BdCoreTypes\BdCoreTypes.csproj", "{94A6EBE6-DF8A-4284-A67D-76B2667C0FC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BdCore", "BdCore\BdCore.csproj", "{353BF53B-0707-49E4-B51B-7EC94BB18EF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BdCore", "BdCore\BdCore.csproj", "{353BF53B-0707-49E4-B51B-7EC94BB18EF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceDrone", "ReferenceDrone\ReferenceDrone.csproj", "{3C5FC83D-1ECD-49CA-BA18-74AB83A02DC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReferenceDrone", "ReferenceDrone\ReferenceDrone.csproj", "{3C5FC83D-1ECD-49CA-BA18-74AB83A02DC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Dependencies", "_Dependencies\_Dependencies.csproj", "{4C0B4B7D-2314-43F1-B0C3-B2487E61C51F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3C5FC83D-1ECD-49CA-BA18-74AB83A02DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C5FC83D-1ECD-49CA-BA18-74AB83A02DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C5FC83D-1ECD-49CA-BA18-74AB83A02DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C0B4B7D-2314-43F1-B0C3-B2487E61C51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C0B4B7D-2314-43F1-B0C3-B2487E61C51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C0B4B7D-2314-43F1-B0C3-B2487E61C51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C0B4B7D-2314-43F1-B0C3-B2487E61C51F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

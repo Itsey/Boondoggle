@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Plisky.Boondoggle2.Repository {
+namespace Plisky.Boondoggle2 {
 
     public class HardcodedEquipmentRepository : EquipmentRepository {
 

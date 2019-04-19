@@ -7,36 +7,19 @@
     using System.Drawing;
     using System.Linq;
 
-    public class bd2World {
-
-        protected Bilge b = new Bilge(tl: TraceLevel.Off);
-        
-        /// <summary>
-        /// Inject a new instance of bilge, or change the trace level of the current instance. To set the trace level ensure that
-        /// the first parameter is null.  To set bilge simply pass a new instance of bilge.
-        /// </summary>
-        /// <param name="blg">An instance of Bilge to use inside this Hub</param>
-        /// <param name="tl">If specified and blg==null then will alter the tracelevel of the current Bilge</param>
-        public void InjectBilge(Bilge blg, TraceLevel tl = TraceLevel.Off) {
-            if (blg != null) {
-                b = blg;
-            } else {
-                b.CurrentTraceLevel = tl;
-            }
-        }
+    public class bd2World : Bd2GeneralBase {
 
 
-
-        protected bd2Map activeMap;
+        protected Bd2Map activeMap;
         private int nextStartLoc = 0;
 
-        public bd2Map Map {
+        public Bd2Map Map {
             get {
                 return activeMap;
             }
         }
 
-        public bd2World(bd2Map desiredMap) {
+        public bd2World(Bd2Map desiredMap) {
             this.activeMap = desiredMap;
         }
 
@@ -57,7 +40,7 @@
         private const int QUAD_NW2 = 360;
         private const int VAL_RADSTODEGRESSDIV = 180;
 
-        public Point CalculateTargetPointFromSourceAndHeading(Point source, double heading) {
+        public virtual Point CalculateTargetPointFromSourceAndHeading(Point source, double heading) {
             b.Verbose.Log("Calcuating Target from(" + source.ToString() + ") Dir:" + heading.ToString());
 
             //Helpers.ValidateHeading(heading);
@@ -129,7 +112,7 @@
             return (new Point(finalX, finalY));
         }
 
-        internal IEnumerable<Point> EnumerateAllPointsOnRoute_Bresnam(Point initial, Point destination, int cutoff) {
+        public virtual IEnumerable<Point> EnumerateAllPointsOnRoute_Bresnam(Point initial, Point destination, int cutoff) {
             int returnedPoints = 0;
             int dx, dy, err, e2;
             int sx, sy;
@@ -161,7 +144,7 @@
             }
         }
 
-        public Point CalculateNextPositionForObject(Point point, double heading) {
+        public virtual Point CalculateNextPositionForObject(Point point, double heading) {
             if ((point.X >= Map.Width) || (point.Y >= Map.Height)) {
                 // TODO : Unit test
                 throw new InvalidOperationException("Requested point is out of range");
@@ -175,11 +158,11 @@
             return EnumerateAllPointsOnRoute_Bresnam(point, pt, 2).Skip(1).First();
         }
 
-        public bool IsFreeWorldSpace(Point desiredLocation) {
+        public virtual bool IsFreeWorldSpace(Point desiredLocation) {
             return IsValidSpace(desiredLocation) && activeMap.GetTileAtPosition(desiredLocation) == MapTile.DefaultGround;
         }
 
-        internal bool IsValidSpace(Point desiredLocation) {
+        public virtual bool IsValidSpace(Point desiredLocation) {
             if ((desiredLocation.X <= 0) || (desiredLocation.X > activeMap.Width)) {
                 return false;
             }
@@ -189,7 +172,7 @@
             return true;
         }
 
-        public bool IsLOSBetween(Point sourceLoc, Point destLoc) {
+        public virtual  bool IsLOSBetween(Point sourceLoc, Point destLoc) {
             foreach (var v in EnumerateAllPointsOnRoute_Bresnam(sourceLoc, destLoc, 200)) {
                 if (!IsFreeWorldSpace(v)) {
                     return false;

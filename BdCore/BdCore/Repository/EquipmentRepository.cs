@@ -1,4 +1,4 @@
-﻿namespace Plisky.Boondoggle2.Repository {
+﻿namespace Plisky.Boondoggle2 {
 
     public abstract class EquipmentRepository : IProvideEquipmentDetail {
 

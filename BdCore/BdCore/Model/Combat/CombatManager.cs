@@ -1,6 +1,7 @@
 ﻿namespace Plisky.Boondoggle2 {
     using Plisky.Diagnostics;
     using Plisky.Plumbing;
+    using System;
     using System.Diagnostics;
 
     public class CombatManager {
@@ -26,17 +27,19 @@
         private const int PERCENTAGEDELTA_PERSPEEDUNIT = 8;
 
         private bd2World map;
-        private bd2Randomiser rand;
+        public Bd2CombatCalculator Calcs { get; set; }
 
-        public CombatManager(bd2World mp, bd2Randomiser rnd) {
+        public CombatManager(bd2World mp, Bd2CombatCalculator rnd) {
             map = mp;
-            rand = rnd;
+            Calcs = rnd;
         }
 
-        internal CombatResult ResolveAttack(CombatAttack ca) {
-            CombatResult result = new CombatResult();
-
-            // TODO : UNIT TEST FOR SHOOTING AT A DEAD BOT, should miss.
+        public CombatResult ResolveAttack(CombatAttack ca) {
+            if (ca==null) {
+                throw new BdBaseException("Can not resolve an attack without a combat attack");
+            }
+            ca.Validate();
+            CombatResult result = new CombatResult();            
 
             bool canHit = true;
 
@@ -49,7 +52,7 @@
                 canHit = false;
             }
 
-            if ((canHit) && (!CombatHelper.CanMountPointHitTarget(ca.Attacker.Heading, ca.WeaponInstance.MountPoint, ca.Attacker.Position, ca.Victim.Position))) {
+            if ((canHit) && (!Calcs.CanMountPointHitTarget(ca.Attacker.Heading, ca.WeaponInstance.MountPoint, ca.Attacker.Position, ca.Victim.Position))) {
                b.Verbose.Log( string.Format("WeaponFire ({0} --> {1}) - Miss, Mountpoint Cant Target.", ca.Attacker.Bot.Name, ca.Victim.Bot.Name));
                 canHit = false;
             }
@@ -62,14 +65,16 @@
                 hC += GetSpeedModifier(ca.Attacker.Speed, ca.Victim.Speed);
                 hC += GetDistanceModifier(map.GetDistanceBetween(ca.Attacker.Position, ca.Victim.Position));
 
-                result.DidHit = rand.DidAchievePercentage(hC);
+                result.DidHit = Calcs.DidAchievePercentage(hC);
                 b.Info.Log( string.Format("WeaponFire ({0} --> {1}) - Hit Chance {2} - Hit : {3}", ca.Attacker.Bot.Name, ca.Victim.Bot.Name, hC, result.DidHit));
                 if (result.DidHit) {
-                    result.TotalDamage = rand.D10Rolls(ca.Weapon.D10DamageRolls);
+                    result.TotalDamage = Calcs.D10Rolls(ca.Weapon.D10DamageRolls);
                 }
             }
             return result;
         }
+
+        
 
         private double GetDistanceModifier(int p) {
             if (p < 4) {
@@ -88,7 +93,7 @@
             return result;
         }
 
-        private double GetSingleSpeedModifier(int p1) {
+        public double GetSingleSpeedModifier(int p1) {
             if (p1 == 0) {
                 return PERCENTAGEDELTA_PERSPEEDUNIT;
             }

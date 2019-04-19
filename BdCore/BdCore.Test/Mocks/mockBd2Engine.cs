@@ -86,7 +86,9 @@
             var owner = GetMappedBotByPublicId(owningBotId);
             Point sourceLoc = owner.Position;
             Point destLoc = GetMappedBotById(activeData.GetEngineIdFromScanId(owner.EngineId, tempScanKey)).Position;
-            if (!CombatHelper.CanMountPointHitTarget(owner.Heading, MountPoint.Forward, sourceLoc, destLoc)) {
+            
+
+            if (!combatCore.Calcs.CanMountPointHitTarget(owner.Heading, MountPoint.Forward, sourceLoc, destLoc)) {
                 return 0;
             }
             if (!this.activeWorld.IsLOSBetween(sourceLoc, destLoc)) {

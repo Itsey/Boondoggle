@@ -5,25 +5,7 @@
     using System.Diagnostics;
     using System.Drawing;
 
-    public class bd2Map {
-
-        protected Bilge b = new Bilge(tl: TraceLevel.Off);
-        
-        /// <summary>
-        /// Inject a new instance of bilge, or change the trace level of the current instance. To set the trace level ensure that
-        /// the first parameter is null.  To set bilge simply pass a new instance of bilge.
-        /// </summary>
-        /// <param name="blg">An instance of Bilge to use inside this Hub</param>
-        /// <param name="tl">If specified and blg==null then will alter the tracelevel of the current Bilge</param>
-        public void InjectBilge(Bilge blg, TraceLevel tl = TraceLevel.Off) {
-            if (blg != null) {
-                b = blg;
-            } else {
-                b.CurrentTraceLevel = tl;
-            }
-        }
-
-
+    public class Bd2Map : Bd2GeneralBase {
 
         protected Dictionary<Point, MapTile> mapLocations = new Dictionary<Point, MapTile>();
         protected List<Point> validStartLocations = new List<Point>();
@@ -49,13 +31,13 @@
             }
         }
 
-        public bd2Map() {
+        public Bd2Map() {
             Height = Width = 0;
             Name = null;
             MapType = MapConditionType.ZeroBotsRemain;
         }
 
-        public bd2Map(string desiredName, int desiredWidth, int desiredHeight) {
+        public Bd2Map(string desiredName, int desiredWidth, int desiredHeight) {
             Height = desiredHeight;
             Width = desiredWidth;
             Name = desiredName;

@@ -1,6 +1,5 @@
 ﻿namespace Plisky.Boondoggle2 {
-
-    using Plisky.Boondoggle2.Repository;
+    
     using System.Collections.Generic;
 
     public class EquipmentSupport {

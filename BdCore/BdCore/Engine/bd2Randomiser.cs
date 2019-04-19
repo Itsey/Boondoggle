@@ -1,12 +1,16 @@
 ﻿namespace Plisky.Boondoggle2 {
 
     using System;
+    using System.Drawing;
 
-    public abstract class bd2Randomiser {
+    public abstract class Bd2CombatCalculator {
 
         protected abstract int ActualGetD10();
 
         protected abstract int ActualGetD100();
+
+        protected abstract bool ActualCanMountPointHitTarget(double sourceHeading, MountPoint mountPoint, Point sourceLoc, Point destLoc);
+        
 
         public bool DidAchievePercentage(double hC) {
             int targetPercent = (int)Math.Round(hC);
@@ -20,5 +24,19 @@
             }
             return result;
         }
+
+
+        public  bool CanMountPointHitTarget(double sourceHeading, MountPoint mountPoint, Point sourceLoc, Point destLoc) {
+            if (mountPoint == MountPoint.Turret) { return true; }
+            if (mountPoint == MountPoint.Internal) { return false; }
+
+            return ActualCanMountPointHitTarget(sourceHeading,mountPoint,sourceLoc,destLoc);
+
+          
+        }
+
+
+
+        
     }
 }

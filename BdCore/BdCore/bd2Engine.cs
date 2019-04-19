@@ -7,25 +7,7 @@
     using System.Drawing;
 
     public class bd2Engine : bd2BaseModel {
-
-        protected Bilge b = new Bilge(tl: TraceLevel.Off);
-
-        /// <summary>
-        /// Inject a new instance of bilge, or change the trace level of the current instance. To set the trace level ensure that
-        /// the first parameter is null.  To set bilge simply pass a new instance of bilge.
-        /// </summary>
-        /// <param name="blg">An instance of Bilge to use inside this Hub</param>
-        /// <param name="tl">If specified and blg==null then will alter the tracelevel of the current Bilge</param>
-        public void InjectBilge(Bilge blg, TraceLevel tl = TraceLevel.Off) {
-            if (blg != null) {
-                b = blg;
-            } else {
-                b.CurrentTraceLevel = tl;
-            }
-        }
-
-
-
+        
         public bool CanBattleStart { get; private set; }
 
         public bool BattleActive { get; private set; }
@@ -103,7 +85,7 @@
             b.Info.Log("bd2Engine online.");
         }
 
-        public void AddWorld(bd2World desiredWorld, bd2Randomiser rndManager = null) {
+        public void AddWorld(bd2World desiredWorld, Bd2CombatCalculator rndManager = null) {
             activeWorld = desiredWorld;
             if (rndManager == null) {
                 rndManager = new DefaultRandomiser();
@@ -374,7 +356,7 @@
             if (Tick == 11) {
                 ActiveTurnData atd = new ActiveTurnData();
                 atd.LastTickRecords = new Dictionary<int, LastTickRecord>();
-                foreach (var v in activeData.LastTickRecords.Keys) {
+                foreach (int v in activeData.LastTickRecords.Keys) {
                     atd.LastTickRecords.Add(v, activeData.LastTickRecords[v]);
                 }
             }
@@ -494,7 +476,7 @@
 
                 //b.Info.FurtherInfo(nextLine);
             }
-            foreach (var z in matches) {
+            foreach (string z in matches) {
                 b.Info.Log(z);
             }
             b.Info.Log("DONE");

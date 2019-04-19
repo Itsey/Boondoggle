@@ -1,6 +1,5 @@
 ﻿namespace Plisky.Boondoggle2.Test {
 
-    using Plisky.Boondoggle2.Repository;
     using System;
     using System.Drawing;
 

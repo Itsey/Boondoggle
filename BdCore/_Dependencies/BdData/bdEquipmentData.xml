@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bdequipment>
+  <item>
+    <uniqueid>1</uniqueid>
+    <classification>0</classification>
+    <displayname>Test Equipment - all positions</displayname>
+    <mountablePositions>
+      <pos>Internal</pos>
+      <pos>Forward</pos>
+      <pos>Backward</pos>
+      <pos>Nearside</pos>
+      <pos>Offside</pos>
+      <pos>Turret</pos>
+    </mountablePositions>
+  </item>
+  <item>
+    <uniqueid>2</uniqueid>
+    <classification>0</classification>
+    <displayname>Test Equipment - Internal Only</displayname>
+    <mountablePositions>
+      <pos>Internal</pos>
+    </mountablePositions>
+  </item>
+  <item>
+    <uniqueid>3</uniqueid>
+    <classification>0</classification>
+    <displayname>Test Equipment - Internal Only</displayname>
+    <mountablePositions>
+      <pos>Forward</pos>
+      <pos>Backward</pos>
+      <pos>Nearside</pos>
+      <pos>Offside</pos>
+    </mountablePositions>
+  </item>
+</bdequipment>

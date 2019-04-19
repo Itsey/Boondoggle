@@ -25,7 +25,8 @@ namespace Plisky.Boondoggle2 {
         }
 
 
-
+        protected List<EquipmentInstallationResult> allInstalledEquipment = new List<EquipmentInstallationResult>();
+        protected Dictionary<string, EquipmentInstallationResult> namedEquipment = new Dictionary<string, EquipmentInstallationResult>();
 
         protected IKnowWhatBotsDo engineQueryProvider;
         protected IProvideBotInteractivity engineActionProvider;
@@ -121,8 +122,7 @@ namespace Plisky.Boondoggle2 {
             return ChangeHeading(amountToTurnBy);
         }
 
-        protected List<EquipmentInstallationResult> allInstalledEquipment = new List<EquipmentInstallationResult>();
-        protected Dictionary<string, EquipmentInstallationResult> namedEquipment = new Dictionary<string, EquipmentInstallationResult>();
+        
 
         public EquipmentInstallationResult GetPowerPack() {
             return this.PowerPack;

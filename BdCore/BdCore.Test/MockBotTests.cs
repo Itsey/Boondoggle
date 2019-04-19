@@ -1,6 +1,5 @@
-﻿namespace BdCore.Test {
-    using Plisky.Boondoggle2;
-    using Plisky.Boondoggle2.Test;
+﻿namespace Plisky.Boondoggle2.Test {
+    using Plisky.Boondoggle2;    
     using Plisky.Plumbing;
     using Plisky.Test;
     using System;
@@ -12,7 +11,7 @@
 
     public class MockBotTests {
 
-
+        
         [Fact(DisplayName = nameof(CreateMockBot_AllowsSetName))]
         [Trait(Traits.Age, Traits.Fresh)]
         [Trait(Traits.Style, Traits.Unit)]

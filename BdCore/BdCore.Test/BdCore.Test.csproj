@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>Plisky.Boondoggle2.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +22,6 @@
     <ProjectReference Include="..\BdCoreTypes\BdCoreTypes.csproj" />
     <ProjectReference Include="..\BdCore\BdCore.csproj" />
     <ProjectReference Include="..\ReferenceDrone\ReferenceDrone.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Support\" />
   </ItemGroup>
 
 </Project>
