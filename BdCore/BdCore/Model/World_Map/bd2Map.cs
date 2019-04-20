@@ -1,6 +1,7 @@
 ﻿namespace Plisky.Boondoggle2 {
     using Plisky.Diagnostics;
     using Plisky.Plumbing;
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
@@ -19,7 +20,7 @@
         public string Name { get; set; }
 
         public MapTile GetTileAtPosition(Point position) {
-            if ((position.X <= 0) || (position.X > Height) || (position.Y <= 0) || (position.Y > Height)) {
+            if (!IsPointInsideMapArea(position)) {
                 b.Info.Log("Tile request out of range, Engine should range check,  Asked for " + position.ToString() + "Map W:" + Width.ToString() + " H: " + Height.ToString());
                 throw new BdBaseException("Tile out of map range");
             }
@@ -29,6 +30,13 @@
             } else {
                 return mapLocations[position];
             }
+        }
+
+        private bool IsPointInsideMapArea(Point position) {
+            if ((position.X <= 0) || (position.X > Width) || (position.Y <= 0) || (position.Y > Height)) {
+                return false;
+            }
+            return true;
         }
 
         public Bd2Map() {
@@ -58,6 +66,9 @@
         }
 
         public void SetStartPosition(Point point) {
+            if (!IsPointInsideMapArea(point)) {
+                throw new BdBaseException("That start position is out of range");
+            }
             foreach (var v in validStartLocations) {
                 if (v == point) {
                     throw new BdBaseException("Cant add the same start position twice");
@@ -67,7 +78,7 @@
         }
 
         public Point GetStartPosition(int count) {
-            b.Verbose.Log( "Request start position for point number : " + count.ToString());
+            b.Verbose.Log("Request start position for point number : " + count.ToString());
 
             if ((count < 1) || (count > validStartLocations.Count)) {
                 throw new BdBaseException(string.Format("The start position request is out of range. Requested [{0}] Max [{1}]", count, validStartLocations.Count));

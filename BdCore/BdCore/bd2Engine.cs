@@ -88,7 +88,7 @@
         public void AddWorld(bd2World desiredWorld, Bd2CombatCalculator rndManager = null) {
             activeWorld = desiredWorld;
             if (rndManager == null) {
-                rndManager = new DefaultRandomiser();
+                rndManager = new DefaultCalcsRules();
             }
             combatCore = new CombatManager(activeWorld, rndManager);
         }

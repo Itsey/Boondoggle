@@ -3,7 +3,7 @@
     using System;
     using System.Drawing;
 
-    public class DefaultRandomiser : Bd2CombatCalculator {
+    public class DefaultCalcsRules : Bd2CombatCalculator {
         private Random r = new Random();
 
       

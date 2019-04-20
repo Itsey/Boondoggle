@@ -1,6 +1,5 @@
-﻿namespace Plisky.Boondoggle.Test {
+﻿namespace Plisky.Boondoggle2.Test {
 
-    using Plisky.Boondoggle2;
 
     public class MockBDMessage : MessageBase {
 
