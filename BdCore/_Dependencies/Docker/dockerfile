@@ -1,0 +1,6 @@
+﻿FROM microsoft/dotnet
+WORKDIR /boondoggle
+copy . /boondoggle
+
+ENV BDVAL1 Value1
+ENTRYPOINT ["dotnet","bdconsolerunner.dll"]

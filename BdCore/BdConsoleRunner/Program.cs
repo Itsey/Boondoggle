@@ -38,21 +38,26 @@ namespace Plisky.Boondoggle2.Runner {
                 brc = new BattleRunnerControl(string.Format("bdgl_2_0_{0}", DateTime.Now.ToString("ddmmyy_hh_mm_ss")), "Dummy Battle");
                 brc.AddContestant(new KevBot());
                 brc.AddContestant(new Reference_RightTurnBot());
-                brc.AddContestant(new BorisBot());
-                stopAtEnd = true;
+                brc.AddContestant(new BorisBot());                
             }
 
             b.Info.Log( "Context established, starting main contest");
             try {
+#if false
                 bd2XmlOutputter xmloutput = new bd2XmlOutputter();
                 xmloutput.Initialise(brc.BattleUniqueName);
                 xmloutput.StoreControlData(brc);
+#else
+
+                bd2ConsoleOutputter consoleOut = new bd2ConsoleOutputter();
+                consoleOut.Initialise(brc.BattleUniqueName);
+#endif
 
                 bd2Engine mainEngine = new bd2Engine();
                 mainEngine.InjectBotSupport();
                 mainEngine.InjectEquipmentSupport(new EquipmentSupport(new HardcodedEquipmentRepository()));
                 mainEngine.RegisterForMessages();
-                xmloutput.RegisterForMessages();
+                
 
                 bd2MapRepository bdmr = new bd2MapRepository();
 

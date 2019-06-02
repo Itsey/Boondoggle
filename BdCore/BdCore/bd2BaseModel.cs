@@ -4,10 +4,20 @@
     using System.Diagnostics;
 
     public abstract class bd2BaseModel {
+        /// <summary>
+        /// Recommended that child Register Messages functions reset this.
+        /// </summary>
+        protected bool needToRegister = true;
         protected Hub hub = Hub.Current;
-
         protected Bilge b = new Bilge(tl: TraceLevel.Off);
         
+        protected virtual void OnHubChanged() {
+            // override if you want notification of hub changes (need to reregister for messages for example)
+        }
+
+        public virtual void RegisterMessages() {
+            needToRegister = false;
+        }
         /// <summary>
         /// Inject a new instance of bilge, or change the trace level of the current instance. To set the trace level ensure that
         /// the first parameter is null.  To set bilge simply pass a new instance of bilge.
@@ -27,7 +37,11 @@
 
         public void InjectHub(Hub desiredHub) {
             b.Verbose.Log("Hub injected into base class");
-            hub = desiredHub;
+            if (!object.ReferenceEquals(hub, desiredHub)) {
+                hub = desiredHub;
+                needToRegister = true;
+                OnHubChanged();
+            }
         }
     }
 }

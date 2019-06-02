@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <img src="~/images/bdtitle.png" />
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h2>About Boondoggle</h2>
+
+        <a asp-area="" asp-controller="Home" asp-action="About">About</a>
+
+    </div>
+    <div class="col-md-6">
+        <h2>Play</h2>
+        <a asp-area="" asp-controller="Home" asp-action="Main">Log In!</a>
+
+    </div>
+
+</div>
+
+<select class="form-control" id="optlist" name="selectbasic">
+
+</select>
+
+@section scripts {
+    <script src="~/assets/vendor/Phaser/phaser.min.js"></script>
+    
+    <script src="~/js/proto.js"></script>
+}

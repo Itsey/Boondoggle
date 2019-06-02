@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boondoggle", "Boondoggle\Boondoggle.csproj", "{13BDF58B-E544-43EE-B97B-5ED953C7703D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13BDF58B-E544-43EE-B97B-5ED953C7703D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13BDF58B-E544-43EE-B97B-5ED953C7703D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13BDF58B-E544-43EE-B97B-5ED953C7703D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13BDF58B-E544-43EE-B97B-5ED953C7703D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF5206F3-FED1-4F9D-B14F-9467D752B9F0}
+	EndGlobalSection
+EndGlobal

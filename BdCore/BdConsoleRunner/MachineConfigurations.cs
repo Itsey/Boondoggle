@@ -8,8 +8,14 @@
 
         public static void PerformMachineConfig() {
             string pathToUse = Environment.ExpandEnvironmentVariables("%PLISKYAPPROOT%");
-            pathToUse = Path.Combine(pathToUse, "bdConfig");
-            ConfigHub.Current.AddDirectoryFallbackProvider(pathToUse,"generic.chcfg");
+            if (!Directory.Exists(pathToUse)) {
+                ConfigHub.Current.RegisterProvider("MapPathName", () => {
+                    return Environment.CurrentDirectory;
+                });
+            } else {
+                pathToUse = Path.Combine(pathToUse, "bdConfig");
+                ConfigHub.Current.AddDirectoryFallbackProvider(pathToUse, "generic.chcfg");
+            }
             //ConfigHub.Current.AddDefaultAppConfigFallback();
         }
     }

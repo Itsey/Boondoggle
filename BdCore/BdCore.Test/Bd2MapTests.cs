@@ -11,7 +11,7 @@
 
     public class Bd2MapTests {
 
-        protected Bilge b = new Bilge(tl: TraceLevel.Off);
+        protected Bilge b = new Bilge(tl: TraceLevel.Verbose);
 
 
 
